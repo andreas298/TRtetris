@@ -29,6 +29,13 @@ void mouse(int button, int state, int xmouse, int ymouse){
       }
 }
 
+/*void mykeyboard (unsigned char key, int x, int y){
+
+
+}
+
+*/
+
 void renderScene(void){
       glClear(GL_COLOR_BUFFER_BIT);
       glClearColor(1,1,1,1);
@@ -51,6 +58,7 @@ void main (int argc, char **argv){
       glutCreateWindow("TR");
       gluOrtho2D(-w/2,w/2,-h/2,h/2);
       glutDisplayFunc(renderScene);
+	  //glutKeyboardFunc(mykeyboard);
       glutMouseFunc(mouse);
       glutTimerFunc(1,timer,0);
       glutMainLoop();
