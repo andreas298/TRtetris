@@ -3,11 +3,11 @@
 #include <GL\glew.h>
 #include <GL\glut.h>
 #include <math.h>
-
+#include <Box2D\Box2D.h>
 
 int x=0,y=0,z=0;
 int w=640, h=480;
-
+const int ESCKEY = 27;
 
 void drawQuad() {
 	glLineWidth(4.0);
@@ -20,6 +20,8 @@ void drawQuad() {
       glEnd();
 }
 
+
+
 void mouse(int button, int state, int xmouse, int ymouse){
       if(button==GLUT_LEFT_BUTTON && state==GLUT_DOWN){
           
@@ -29,12 +31,15 @@ void mouse(int button, int state, int xmouse, int ymouse){
       }
 }
 
-/*void mykeyboard (unsigned char key, int x, int y){
-
-
+void mykeyboard(unsigned char key, int x, int y)
+{
+   switch (key)
+   {
+   case ESCKEY:  // ESC: Quit
+      exit(0);
+      break;
+   }
 }
-
-*/
 
 void renderScene(void){
       glClear(GL_COLOR_BUFFER_BIT);
@@ -58,7 +63,7 @@ void main (int argc, char **argv){
       glutCreateWindow("TR");
       gluOrtho2D(-w/2,w/2,-h/2,h/2);
       glutDisplayFunc(renderScene);
-	  //glutKeyboardFunc(mykeyboard);
+      glutKeyboardFunc(mykeyboard);
       glutMouseFunc(mouse);
       glutTimerFunc(1,timer,0);
       glutMainLoop();
